@@ -13,7 +13,7 @@ var http = require('http');
  */
 
 // MAKE SURE YOU CHANGE THIS TO WHAT WE HAVE ON LINE 17 WHEN YOU WANT TO DEPLOY TO HEROKU. Comment out line 16. UnComment line 17
-var port = 8081;
+var port = 8080;
 // var port =  normalizePort(process.env.PORT || '8080');  
 app.set('port', port);
 
