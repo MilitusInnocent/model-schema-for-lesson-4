@@ -1,19 +1,27 @@
 module.exports = (sequelize, DataTypes) => {
-    const Post = sequelize.define('Post', {
+    const Customer = sequelize.define('Customer', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false,
         },
-        title: {
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notEmpty: true,
             }
         },
-        category: {
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+                is: ["^[a-z]+$",'i'] 
+            }
+        },
+        full_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -21,39 +29,15 @@ module.exports = (sequelize, DataTypes) => {
                 isArray: true,
             }
         },
-        body: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-            validate: {
-                notEmpty: true,
-            }
-        },
-        author_id: {
+        phone: {
             type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
                 notEmpty: true,
+                isArray: true,
             }
-        },
-        post_image: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true,
-                isUrl: true,
-            }
-        },
-        created_dt: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: sequelize.literal('NOW()'),
-        },
-        last_modified_dt: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: sequelize.literal('NOW()'),
         },
     });
     
-    return Post;
+    return Customer;
 };
